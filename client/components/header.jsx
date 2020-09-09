@@ -3,8 +3,9 @@ import React from 'react';
 class Header extends React.Component {
   render() {
     return (
-      <header>
-        <h1>Student Grade Table</h1>
+      <header className="row justify-content-between">
+        <h1 className="col">Student Grade Table</h1>
+        <h2 className="col text-right">Average Grade: <span className="badge badge-success">{this.props.averageGrade}</span></h2>
       </header>
     );
   }
