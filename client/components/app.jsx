@@ -10,6 +10,18 @@ class App extends React.Component {
     };
   }
 
+  getAverageGrade() {
+    let sumGrades = 0;
+    const numOfGrades = this.state.grades.length;
+
+    this.state.grades.forEach(element => {
+      sumGrades += element.grade;
+    });
+
+    const averageGrade = Math.ceil(sumGrades / numOfGrades);
+    return averageGrade;
+  }
+
   componentDidMount() {
     fetch('/api/grades')
       .then(response => response.json())
