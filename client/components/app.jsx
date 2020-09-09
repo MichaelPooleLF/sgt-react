@@ -8,6 +8,7 @@ class App extends React.Component {
     this.state = {
       grades: []
     };
+    this.postGrade = this.postGrade.bind(this);
   }
 
   getAverageGrade() {
@@ -17,7 +18,6 @@ class App extends React.Component {
     this.state.grades.forEach(element => {
       sumGrades += element.grade;
     });
-
     const averageGrade = Math.ceil(sumGrades / numOfGrades);
     return averageGrade;
   }
@@ -27,6 +27,23 @@ class App extends React.Component {
       .then(response => response.json())
       .then(data => this.setState({
         grades: data
+      }))
+      .catch(error => console.error(error));
+  }
+
+  postGrade(newGrade) {
+    const gradesArray = this.state.map(element => ({ ...element }));
+    fetch('/api/grades', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newGrade)
+    })
+      .then(response => response.json)
+      .then(data => gradesArray.push(data))
+      .then(() => this.setState({
+        grades: gradesArray
       }))
       .catch(error => console.error(error));
   }
