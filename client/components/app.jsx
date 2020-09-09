@@ -1,4 +1,6 @@
 import React from 'react';
+import Header from './header';
+import GradeTable from './grade-table';
 
 class App extends React.Component {
   constructor(props) {
@@ -23,48 +25,6 @@ class App extends React.Component {
         <Header />
         <GradeTable grades={this.state.grades} />
       </>
-    );
-  }
-}
-
-class Header extends React.Component {
-  render() {
-    return (
-      <header>
-        <h1>Student Grade Table</h1>
-      </header>
-    );
-  }
-}
-
-class Grade extends React.Component {
-  render() {
-    return (
-      <tr>
-        <td>{this.props.grade.name}</td>
-        <td>{this.props.grade.course}</td>
-        <td>{this.props.grade.grade}</td>
-      </tr>
-    );
-  }
-}
-
-class GradeTable extends React.Component {
-  render() {
-    const tableData = this.props.grades.map(element => {
-      return <Grade key={element.id} grade={element} />;
-    });
-    return (
-      <table className="table table-striped">
-        <thead className="thead-light">
-          <th>Student Name</th>
-          <th>Course</th>
-          <th>Grade</th>
-        </thead>
-        <tbody>
-          {tableData}
-        </tbody>
-      </table>
     );
   }
 }
