@@ -8,6 +8,15 @@ class App extends React.Component {
     };
   }
 
+  componentDidMount() {
+    fetch('/api/grades')
+      .then(response => response.json())
+      .then(data => this.setState({
+        grades: data
+      }))
+      .catch(error => console.error(error));
+  }
+
   render() {
     return (
       <Header />
