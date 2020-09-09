@@ -17,6 +17,30 @@
       "name": "Douglas Crockford",
       "course": "JavaScript",
       "grade": 100
+    },
+    {
+      "name": "Michael Poole",
+      "course": "Learning Fuze",
+      "grade": "100",
+      "id": 33
+    },
+    {
+      "name": "Rock",
+      "course": "Math",
+      "grade": "0",
+      "id": 34
+    },
+    {
+      "name": "Dwayne \"The Rock\" Johnson",
+      "course": "Math",
+      "grade": "87",
+      "id": 35
+    },
+    {
+      "name": "Matt Mercer",
+      "course": "Dungeons and Dragons",
+      "grade": "100",
+      "id": 36
     }
   ]
 }
