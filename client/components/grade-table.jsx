@@ -14,11 +14,13 @@ class GradeTable extends React.Component {
     });
 
     return (
-      <table className="table table-striped">
+      <table className="table table-striped col-8">
         <thead className="thead-light">
-          <th>Student Name</th>
-          <th>Course</th>
-          <th>Grade</th>
+          <tr>
+            <th>Student Name</th>
+            <th>Course</th>
+            <th>Grade</th>
+          </tr>
         </thead>
         <tbody>
           {tableData}
