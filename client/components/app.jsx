@@ -10,6 +10,7 @@ class App extends React.Component {
       grades: []
     };
     this.postGrade = this.postGrade.bind(this);
+    this.deleteGrade = this.deleteGrade.bind(this);
   }
 
   getAverageGrade() {
@@ -44,6 +45,23 @@ class App extends React.Component {
     })
       .then(response => response.json())
       .then(data => gradesArray.push(data))
+      .then(() => this.setState({
+        grades: gradesArray
+      }))
+      .catch(error => console.error(error));
+  }
+
+  deleteGrade(gradeID) {
+    const gradesArray = this.state.grades.map(element => ({ ...element }));
+    gradesArray.forEach((element, index) => {
+      if (element.id === gradeID) {
+        gradesArray.splice(index, 1);
+      }
+    });
+
+    fetch(`/api/grades/${gradeID}`, {
+      method: 'DELETE'
+    })
       .then(() => this.setState({
         grades: gradesArray
       }))
