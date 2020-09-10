@@ -20,6 +20,7 @@ class GradeTable extends React.Component {
             <th>Student Name</th>
             <th>Course</th>
             <th>Grade</th>
+            <th>Operations</th>
           </tr>
         </thead>
         <tbody>

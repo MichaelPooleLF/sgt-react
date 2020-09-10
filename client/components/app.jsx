@@ -51,7 +51,8 @@ class App extends React.Component {
       .catch(error => console.error(error));
   }
 
-  deleteGrade(gradeID) {
+  deleteGrade(event) {
+    const gradeID = parseFloat(event.target.getAttribute('id'));
     const gradesArray = this.state.grades.map(element => ({ ...element }));
     gradesArray.forEach((element, index) => {
       if (element.id === gradeID) {
