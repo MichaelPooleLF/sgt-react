@@ -10,6 +10,7 @@ class App extends React.Component {
       grades: []
     };
     this.postGrade = this.postGrade.bind(this);
+    this.deleteGrade = this.deleteGrade.bind(this);
   }
 
   getAverageGrade() {
@@ -50,12 +51,30 @@ class App extends React.Component {
       .catch(error => console.error(error));
   }
 
+  deleteGrade(event) {
+    const gradeID = parseFloat(event.target.getAttribute('id'));
+    const gradesArray = this.state.grades.map(element => ({ ...element }));
+    gradesArray.forEach((element, index) => {
+      if (element.id === gradeID) {
+        gradesArray.splice(index, 1);
+      }
+    });
+
+    fetch(`/api/grades/${gradeID}`, {
+      method: 'DELETE'
+    })
+      .then(() => this.setState({
+        grades: gradesArray
+      }))
+      .catch(error => console.error(error));
+  }
+
   render() {
     return (
       <>
         <Header averageGrade={this.getAverageGrade()} />
         <div className="row">
-          <GradeTable grades={this.state.grades} />
+          <GradeTable grades={this.state.grades} deleteGrade={this.deleteGrade} />
           <GradeForm postGrade={this.postGrade} />
         </div>
       </>
