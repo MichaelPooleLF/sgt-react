@@ -10,7 +10,7 @@ class GradeTable extends React.Component {
     }
 
     const tableData = this.props.grades.map(element => {
-      return <Grade key={element.id} grade={element} />;
+      return <Grade key={element.id} grade={element} deleteGrade={this.props.deleteGrade} />;
     });
 
     return (
